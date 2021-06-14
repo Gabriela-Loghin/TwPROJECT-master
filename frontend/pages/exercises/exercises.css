@@ -1,0 +1,15 @@
+.invisible{
+    display: none;
+}
+
+#no-ex-found{
+    font-size: xx-large;
+}
+
+@media screen and (max-width: 800px) {
+    iframe {
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+    }
+}

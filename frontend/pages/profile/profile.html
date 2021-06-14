@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="profile.css" />
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="profile.js"></script>
+  <title>Document</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['bar'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // pt all: sum din user_exercises la count
+      // old/....: join intre user_exercises si users: count pe categoria de varsta : select sum(count) ... where age=1/2/3
+      
+      var data = google.visualization.arrayToDataTable([
+        ['Muschi', 'Completate'],
+        ['all', 9],
+        ['biceps', 0],
+        ['triceps', 3],
+        ['cvadriceps femural', 6],
+        ['fesieri', 0],
+        ['biceps femural', 0],
+        ['pectoral', 0],
+        ['drept abdominal', 0],
+        ['oblic extern', 0],
+        ['trapez', 0],
+        ['marele dorsal', 0]
+
+      ]);
+
+      var options = {
+        chart: {
+          title: 'My progress'
+        }
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('muschi'));
+
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+  </script>
+
+<script type="text/javascript">
+  google.charts.load('current', { 'packages': ['corechart'] });
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Levels completed', 'Number of levels'],
+      ['Completed', 90],
+      ['Incompleted', 10]
+    ]);
+
+    var options = {
+      title: 'Exercitii facute'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }
+</script>
+</head>
+
+<body>
+  <nav>
+    <div class="topnav">
+      <a href="../exercises/exercises.html">Exercise</a>
+      <a href="../top/top.html">Top</a>
+      <a href="../contact/contact.html">Contact</a>
+      <a href="../about/about.html">About</a>
+    </div>
+    <div class="topnav">
+      <a href="../../feed/rss.xml">
+        <img src="../../assets/images/rssIcon.jpg" style="width: 30px;" alt="rss icon">
+      </a>
+    </div>
+  </nav>
+  <section class="profile-container">
+    <div class="profile-photo-container"></div>
+    <div class="data-container">
+      <div class="exercise-list-container">
+        <h1 class="title">Exercitii realizate</h1>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="graph-daily" style='background-color: none;'>
+    <selection class="child">
+        <div id="muschi" style="width:1100px; height: 400px; margin-bottom: 20px;"></div>
+
+    </selection>
+    <selection class="child" style="min-height: 80vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;">
+      <div id="piechart" style="width:500px; height: 400px;"></div>
+  
+  </selection>
+</div>
+</body>
+
+</html>

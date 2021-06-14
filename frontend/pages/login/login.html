@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Navigator bar with 2 section and links as buttons -->
+    <nav>
+        <div class="topnav">
+            <!-- Redirect links to other static pages -->
+            <a href="../exercises/exercises.html">Exercise</a>
+            <a href="../top/top.html">Top</a>
+            <a href="../contact/contact.html">Contact</a>
+            <a href="../about/about.html">About</a>
+        </div>
+        <div class="topnav">
+            <a id="notLoggedIn" href="../register/Register.html">Register</a>
+            <a id="loggedIn" href="../profile/profile.html">My account</a>
+        </div>
+    </nav>
+
+    <!-- Html tag defining a section of the page. Works in a similar way with a paragraph -->
+    <div class="login-container">
+
+        <!-- Basic form that calls the submitLogin method if the submit button is clicked -->
+        <form onsubmit="submitLogin(event)">
+            <label for="email-input">
+                <span>Email</span>
+                <input type="email" name="mail" id="email-input" required>
+            </label>
+            <label for="pasword-input">
+                <span>Password</span>
+                <input type="password" name="password" id="pasword-input" required>
+            </label>
+            <input type="submit" value="Login" id="submit-btn">
+        </form>
+
+        <!-- Error message with display:none until the js script changes it to something else -->
+        <div id="invalid-login">Invalid username / password</div>
+
+    </div>
+</body>
+
+</html>

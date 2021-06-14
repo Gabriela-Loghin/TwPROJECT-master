@@ -1,0 +1,99 @@
+
+body {
+  background-image: url("../../assets/images/background.jpg")  no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height:100%;
+  color: black;
+}
+.profile-container {
+  display: flex;
+  max-width: 100vh;
+  width: 90%;
+  margin: 0 auto;
+  align-items: center;
+  flex-direction: column;
+}
+.profile-photo-container {
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #5cbc76;
+  border-width: 0.4em;
+}
+.profile-photo {
+  width: auto;
+  height: 100%;
+}
+
+.data-container {
+  margin: 4em 0 0 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.exercise-list-container {
+  padding: 1em;
+  background-color: #eeeef19d;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.title {
+  margin: 0.7em 0;
+  color: #5cbc76;
+  font-size: 2.5em;
+  text-align: center;
+}
+.exercise {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #5cbc76;
+  padding: 1.5em;
+  border-radius: 1em;
+  font-size: 1.3em;
+  color: white;
+  margin: 1em;
+}
+.exercise p {
+  margin: 0.3em 0;
+}
+.personal-data-container {
+  padding: 1em;
+  background-color: #eeeef19d;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+}
+.data {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #5cbc76;
+  padding: 1.5em;
+  border-radius: 1em;
+  font-size: 1.3em;
+  color: white;
+  width: 80%;
+  margin: 0.5em 0;
+}
+
+rect {
+  fill:black;
+}
+text {
+  fill: white;
+}

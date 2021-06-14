@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="exercises.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="./exercises.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Navigator bar with 2 section and links as buttons -->
+    <nav>
+        <div class="topnav">
+            <!-- Redirect links to other static pages -->
+            <a class="active" href="./exercises.html">Exercise</a>
+            <a href="../top/top.html">Top</a>
+            <a href="../contact/contact.html">Contact</a>
+            <a href="../about/about.html">About</a>
+        </div>
+        <div class="topnav">
+            <a href="../profile/profile.html">My account</a>
+        </div>
+    </nav>
+
+    <!-- Fancy text animation by animating each child of the parent individually -->
+    <div class="container" id="text">
+        <h1>
+            <span>W</span>
+            <span>O</span>
+            <span>R</span>
+            <span>K</span>
+            <span>_</span>
+            <span>Y</span>
+            <span>O</span>
+            <span>U</span>
+            <span>R</span>
+            <span>_</span>
+            <span>B</span>
+            <span>O</span>
+            <span>D</span>
+            <span>Y</span>
+        </h1>
+    </div>
+
+    <main>
+        <div id="optionSection" class="with-login">
+            <!-- Just a forum with an action when the submit button is pressed -->
+            <form onsubmit="submitExerciseForm(event)" id="main-form">
+
+                <div>
+                    <!-- * They actually seem to apear regardless. If the server does some fancy stuff otherwise, idk ... -->
+                    <!--inputuri care  apar doar daca userlui este conectat  -->
+                    <label for="inputGrMuschi">
+                        <span>Grupa de muschi dorita</span>
+                        <select name="grMuschi" id="inputGrMuschi">
+                            <option value="">Alege grupa de muschi</option>
+                            <option value="deltoid">Deltoid</option>
+                            <option value="biceps">Biceps</option>
+                            <option value="triceps">Triceps</option>
+                            <option value="cvadriceps_femural">Cvadriceps femural</option>
+                            <option value="fesier">Fesieri</option>
+                            <option value="biceps_femural">Biceps femural</option>
+                            <option value="pectoral">Pectoral</option>
+                            <option value="drept_abdominal">Drept abdominal</option>
+                            <option value="oblic_extern">Oblic extern</option>
+                            <option value="trapez">Trapez</option>
+                            <option value="marele_dorsal">Marele dorsal</option>
+                        </select>
+                    </label>
+                    <label for="inputDurata">
+                        <span>Durata ( in minute )</span>
+                        <input type="number" min="0" name="time" id="inputDurata" value=0 step="20">
+                    </label>
+                    <label for="inputLocatie">
+                        <span>Locatie</span>
+                        <select name="location" id="inputLocatie">
+                            <option value="">Alegeti locatia</option>
+                            <option value="inside">Acasa</option>
+                            <option value="outside">Afara</option>
+                        </select>
+                    </label>
+                    <div style="text-align: center; padding: 30px; font-size: larger;">Daca nu selectati grupa de muschi
+                        si locatia dorita
+                        veti primi o lista
+                        cu toate
+                        exercitiile potrivite pentru genul
+                        si tipul dvs de corp</div>
+            
+                </div>
+
+                <input type="submit" value="Calculeaza" class="submit-btn" id="submit-btn">
+            </form>
+        </div>
+
+        <!-- Warning message -->
+        <div id="no-ex-found" class="invisible">
+            No exercise found
+        </div>
+        
+        <!-- Section of the page in wich we will render data manually on the page using JS -->
+        <div id="exerciseDisplay" class="invisible">
+        </div>
+
+        <!-- No forum, here we just use id's and classes to select input data -->
+        <input onclick="markExercisesDone()" id="done" class="submit-btn invisible" value="Mark as done" />
+    </main>
+    <footer></footer>
+</body>
+
+</html>

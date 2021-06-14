@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="register.css">
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="register.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <nav>
+    <div class="topnav">
+      <a href="../exercises/exercises.html">Exercise</a>
+      <a href="../top/top.html">Top</a>
+      <a href="../contact/contact.html">Contact</a>
+      <a href="../about/about.html">About</a>
+    </div>
+    <div class="topnav">
+      <a id="notLoggedIn" href="../login/login.html">Login</a>
+      <a id="loggedIn" href="../profile/profile.html">My account</a>
+    </div>
+  </nav>
+
+  <div class="wrapper">
+
+    <h1 id="text">
+      <span>R</span>
+      <span>E</span>
+      <span>G</span>
+      <span>I</span>
+      <span>S</span>
+      <span>T</span>
+      <span>E</span>
+      <span>R</span>
+    </h1>
+    <form onsubmit="submitRegister(event)">
+      <div class="Form">
+        <div class="Input">
+          <label>First Name</label>
+          <input type="text" class="input" name="first" required>
+        </div>
+        <div class="Input">
+          <label>Last Name</label>
+          <input type="text" class="input" name="last" required>
+        </div>
+        <div class="Input">
+          <label>Password</label>
+          <input type="password" name="pass" class="input" required>
+        </div>
+        <div class="Input">
+          <label>Confirm Password</label>
+          <input type="password" name="cpass" class="input" required>
+        </div>
+
+        <div style="color: red;" id="passwords-dont-match" class="hidden">
+          Passwords should match
+        </div>
+
+        <div class="Input">
+          <label>Email Address</label>
+          <input type="email" class="input" name="email" required>
+          <div id="invalid-register" class="hidden">Email already exists</div>
+        </div>
+        <div class="Input">
+          <label>Gender</label>
+          <div class="Gender_select">
+            <select required name="gender">
+              <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+
+        </div>
+
+        <label for="inputWeight">
+          <span>Greutate ( in kg )</span>
+          <input type="number" min="40" name="weight" id="inputWeight" value=50 required>
+        </label>
+
+        <label for="inputHeight">
+          <span>Height ( in cm )</span>
+          <input type="number" min="100" name="height" id="inputHeight" value=160 required>
+        </label>
+
+        <label for="inputAge">
+          <span>Age</span>
+          <input type="number" min="16" name="age" id="inputAge" value=30 required>
+        </label>
+
+        <label for="image">
+          <span>Select image</span>
+          <input type="file" id="imgUpload" name="img" accept="image/*">
+        </label>
+
+        <div class="Input_Terms">
+          <label class="check">
+            <input type="checkbox" required>
+            <span class="checkmark"></span>
+          </label>
+          <p>Agreed to terms and conditions</p>
+        </div>
+        <div class="Input">
+          <input type="submit" value="Register" class="btn">
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+
+
+</body>
+
+</html>

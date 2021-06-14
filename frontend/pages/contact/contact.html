@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="contact.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <nav>
+    <div class="topnav">
+      <a href="../exercises/exercises.html">Exercise</a>
+      <a href="../top/top.html">Top</a>
+      <a class="active" href="../contact/contact.html">Contact</a>
+      <a href="../about/about.html">About</a>
+    </div>
+    <div class="topnav">
+      <a id="notLoggedIn" href="../login/login.html">Login</a>
+      <a id="loggedIn" href="../profile/profile.html">My account</a>
+    </div>
+  </nav>
+
+  <form class="wrapper contact_wrapper" onsubmit="submitContact(event)">
+
+
+    <h1>Contact Us</h1>
+
+    <div class="Input">
+      <label>First Name</label>
+      <input type="text" class="input" name="firstName">
+    </div>
+    <div class="Input">
+      <label>Email From</label>
+      <input type="email" class="input" name="email">
+    </div>
+    <div class="Input">
+      <label>Message</label>
+      <input type="text" class="input" name="message">
+    </div>
+    <div class="Input">
+      <input type="submit" value="Send" class="btn">
+    </div>
+
+  </form>
+
+  <div class="team-members">
+    <h1>Our Team</h1>
+    <div class="ps">
+      <h3>Rotaru Vasile Alexandru</h3>
+      <h3>Craciun Dragos</h3>
+      <h3>Loghin Gabriela Alina</h3>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

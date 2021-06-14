@@ -1,0 +1,48 @@
+body {
+  background-image: url("../../assets/images/background.jpg")  !important;
+  overflow-y: scroll;
+}
+
+.top {
+  width: 80%;
+  background-color: #eeeef181;
+  margin: 3em 0;
+  padding: 3em 2em;
+  border-radius: 2em;
+}
+.person {
+  background-color: #5cbc76;
+  padding: 1.5em;
+  border-radius: 1em;
+  display: flex;
+  margin: 0 0 3em 0;
+}
+.person-image-container {
+  flex: 2;
+}
+.person-image {
+  object-fit: cover;
+  max-width: 100%;
+}
+.person-data {
+  position: relative;
+  flex: 4;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2em;
+  padding: 0em 3em;
+}
+.ranking-number {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: 5em;
+}
+
+rect {
+  fill:none;
+}
+text {
+  fill: white;
+}

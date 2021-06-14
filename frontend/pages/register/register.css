@@ -1,0 +1,215 @@
+
+
+body{
+    font:15px/1.5 Arial,Helvetica,sans-serif;
+    padding:0;
+    margin:0;
+    background-image:url("../../assets/images/0W8cGf.jpg")  !important;
+    background-repeat: no-repeat;
+}
+
+.wrapper{
+    max-width: 500px;
+    width:450px;
+    text-align: center;
+    background:rgba(66, 24, 24, 0.6);
+    
+    color:white;
+    margin:20px auto;
+    padding:30px;
+    box-shadow:1px 1px 2px rgba(0,0,0,0.125);
+}
+
+.wrapper h1{
+    position:relative;
+    text-align: center;
+    align-items: center;
+    font-size:3em;
+    color:#333;
+    font-family:sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: inline-block;
+}
+
+h1 span{
+    animation:light 1.8s linear infinite;
+    text-align: center;
+}
+
+h1 span:nth-child(1){
+    animation-delay: 0s;
+}
+h1 span:nth-child(2){
+    animation-delay: 0.2s;
+}
+h1 span:nth-child(3){
+    animation-delay: 0.4s;
+}
+h1 span:nth-child(4){
+    animation-delay: 0.6s;
+}
+h1 span:nth-child(5){
+    animation-delay: 0.8s;
+}
+h1 span:nth-child(6){
+    animation-delay: 1.0s;
+}
+h1 span:nth-child(7){
+    animation-delay: 1.20s;
+}
+h1 span:nth-child(8){
+    animation-delay: 1.40s;
+}
+
+@keyframes light{
+    0%,80%{
+        color:#333;
+        text-shadow:none;
+    }
+    100%{
+        color:white;
+        text-shadow: 0 0 10px white,
+                     0 0 20px white,
+                     0 0 40px white,
+                     0 0 80px white,
+                     0 0 120px white,
+                     0 0 160px white;
+    }
+
+}
+
+.wrapper .Form{
+    width:100%;
+    
+}
+.wrapper .Form .Input{
+    margin-bottom: 15px;
+    display:inline-block;
+    align-items: center;
+
+}
+
+.wrapper .Form .Input{
+    width:200px;
+    color:#ffffff;
+    margin-right: 10px;
+    font-size:14px;
+}
+
+.wrapper .Form .Input .input{
+    width:100%;
+    outline:none;
+    border:1px solid #d5dbd9;
+    font-size: 15px;
+    padding:8px 10px;
+    border-radius:3px;
+    transition:all 0.3s ease;
+
+}
+
+.wrapper .Form .Input .Gender_select{
+    position:relative;
+    width:100%;
+    height:37px;
+}
+
+.wrapper .Form .Input .Gender_select select{
+    -webkit-appearance: none;
+    appearance: none;
+    border:1px solid #d5dbd9;
+    width:100%;
+    height:100%;
+    padding:8px 10px;
+    border-radius: 3px;
+}
+
+.wrapper .Form .Input .Gender_select:before{
+    content:"";
+    position:absolute;
+    top:10px;
+    right:12px;
+    border:8px solid;
+    border-color:#d5dbd9 transparent transparent transparent;
+    pointer-events: none;
+}
+
+.wrapper .Form .Input .input:focus,
+.wrapper .Form .Input .input select:focus{
+    border:1px solid #fec107;
+}
+
+.wrapper .Form .Input p{
+    font-size:14px;
+    color:#757575;
+}
+
+.wrapper .Form .Input .check{
+    width:15px;
+    height:15px;
+    position:relative;
+    display:block;
+    cursor:pointer;
+
+
+}
+
+.wrapper .Form .Input .check input[type="checkbox"]{
+    position:absolute;
+    top:0;
+    left:0;
+    opacity: 0;
+
+
+}
+
+.wrapper .Form .Input .check .checkmark{
+    width:15px;
+    height:15px;
+    border:1px solid #fec107;
+    display:block;
+    position: relative;
+    background:#fec107;
+
+
+}
+
+.wrapper .Form .Input .check .checkmark:before{
+    content:"";
+    position: absolute;
+    top:0;
+    left:0;
+    width:5px;
+    height: 5px;
+    border: 2px solid;
+  
+    transform: rotate(-45deg);
+
+
+}
+
+.wrapper .Form .Input .btn{
+    width:100%;
+    padding:8px 10px;
+    font-size:15px;
+    border:0;
+    background:crimson;
+    color:white;
+    cursor:pointer;
+    border-radius:3px;
+
+
+}
+
+.wrapper .Form .Input .btn:hover{
+    background-color: rgb(73, 48, 90);
+    transition:0.5s ease;
+} 
+
+.hidden{
+  display: none;
+}
+
+
+
