@@ -8,9 +8,27 @@ body{
     background-repeat: no-repeat;
 }
 
+input[type="file"] {
+    display: none;
+}
+.uploadImageClass {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.uploadImageClass:hover{
+     background: 1px solid #000;
+     color:#ccc;
+}
 .wrapper{
-    max-width: 500px;
-    width:450px;
+    max-width: 50%;
+    width:50%;
     text-align: center;
     background:rgba(66, 24, 24, 0.6);
     
@@ -90,9 +108,12 @@ h1 span:nth-child(8){
     align-items: center;
 
 }
+.flex{
+    display:flex;
+}
 
 .wrapper .Form .Input{
-    width:200px;
+    width:100%;
     color:#ffffff;
     margin-right: 10px;
     font-size:14px;

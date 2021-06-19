@@ -1,119 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="register.css" />
+    <link rel="stylesheet" href="../../style.css" />
+    <script src="register.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <script defer src="../utils/utils.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <title>Register</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="register.css">
-  <link rel="stylesheet" href="../../style.css" />
-  <script src="register.js"></script>
-  <title>Document</title>
-</head>
+  <body onload="checkAuth(false)">
+    <nav>
+      <div class="topnav">
+        <a id="homeLink" href="../about/about.html"
+          ><i class="fas fa-home"></i> Home</a
+        >
+        <a
+          style="display: none"
+          id="exercisesLink"
+          class="active"
+          href="../exercises/exercises.html"
+          ><i class="fas fa-star-half-alt"></i> Exercise</a
+        >
+        <a id="topLink" href="../top/top.html"
+          ><i class="fas fa-star-half-alt"></i> Top</a
+        >
+        <a id="contactLink" href="../contact/contact.html"
+          ><i class="far fa-envelope"></i> Contact</a
+        >
+      </div>
+      <div class="topnav">
+        <!-- <a id="notLoggedIn" href="../register/Register.html">Register</a>
+          <a id="loggedIn" href="../profile/profile.html">My account</a> -->
+        <a style="display: none" id="myAccount" href="../profile/profile.html"
+          ><i class="fas fa-user"></i> My Account</a
+        >
+        <a
+          style="display: none"
+          id="myLogout"
+          href="../about/about.html?logout=true"
+          ><i class="fas fa-sign-out-alt"></i> Logout</a
+        >
+        <a class="active" id="generalAccount" href="../profile/profile.html"
+          ><i class="fas fa-user-circle"></i> Account</a
+        >
+      </div>
+    </nav>
 
-<body>
-  <nav>
-    <div class="topnav">
-      <a href="../exercises/exercises.html">Exercise</a>
-      <a href="../top/top.html">Top</a>
-      <a href="../contact/contact.html">Contact</a>
-      <a href="../about/about.html">About</a>
-    </div>
-    <div class="topnav">
-      <a id="notLoggedIn" href="../login/login.html">Login</a>
-      <a id="loggedIn" href="../profile/profile.html">My account</a>
-    </div>
-  </nav>
-
-  <div class="wrapper">
-
-    <h1 id="text">
-      <span>R</span>
-      <span>E</span>
-      <span>G</span>
-      <span>I</span>
-      <span>S</span>
-      <span>T</span>
-      <span>E</span>
-      <span>R</span>
-    </h1>
-    <form onsubmit="submitRegister(event)">
-      <div class="Form">
-        <div class="Input">
-          <label>First Name</label>
-          <input type="text" class="input" name="first" required>
-        </div>
-        <div class="Input">
-          <label>Last Name</label>
-          <input type="text" class="input" name="last" required>
-        </div>
-        <div class="Input">
-          <label>Password</label>
-          <input type="password" name="pass" class="input" required>
-        </div>
-        <div class="Input">
-          <label>Confirm Password</label>
-          <input type="password" name="cpass" class="input" required>
-        </div>
-
-        <div style="color: red;" id="passwords-dont-match" class="hidden">
-          Passwords should match
-        </div>
-
-        <div class="Input">
-          <label>Email Address</label>
-          <input type="email" class="input" name="email" required>
-          <div id="invalid-register" class="hidden">Email already exists</div>
-        </div>
-        <div class="Input">
-          <label>Gender</label>
-          <div class="Gender_select">
-            <select required name="gender">
-              <option value="">Select</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
+    <div class="wrapper">
+      <h1 id="text">
+        <span>R</span>
+        <span>E</span>
+        <span>G</span>
+        <span>I</span>
+        <span>S</span>
+        <span>T</span>
+        <span>E</span>
+        <span>R</span>
+      </h1>
+      <form onsubmit="submitRegister(event)">
+        <div class="Form">
+          <div class="flex text-left">
+            <div class="Input">
+              <div>
+                <label>First Name</label>
+                <input
+                  type="text"
+                  value="admin"
+                  class="input"
+                  placeholder="First Name"
+                  name="first"
+                  required
+                />
+              </div>
+            </div>
+            <div class="Input">
+              <div>
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  value="admin"
+                  class="input"
+                  placeholder="Last Name"
+                  name="last"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="flex text-left">
+            <div class="Input">
+              <div>
+                <label>Password</label>
+                <input
+                  type="password"
+                  value="admin"
+                  name="pass"
+                  placeholder="Password"
+                  class="input"
+                  required
+                />
+              </div>
+            </div>
+            <div class="Input">
+              <div>
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  value="admin"
+                  name="cpass"
+                  placeholder="Confirm Password"
+                  class="input"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div style="color: red" id="passwords-dont-match" class="hidden">
+            Passwords should match
           </div>
 
+          <div class="Input">
+            <div class="text-left" style="margin-right: 10px">
+              <label>Email Address</label>
+              <input
+                type="email"
+                value="admin@yahoo.com"
+                placeholder="Email"
+                class="input"
+                name="email"
+                required
+              />
+              <div id="invalid-register" class="hidden">
+                Email already exists
+              </div>
+            </div>
+          </div>
+          <div class="flex text-left">
+            <div class="Input">
+              <div>
+                <label>Gender</label>
+                <div class="Gender_select">
+                  <select required name="gender">
+                    <!-- <option value="">Select</option> -->
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="Input">
+              <div>
+                <label>Age</label>
+                <input
+                  type="number"
+                  class="input"
+                  min="16"
+                  name="age"
+                  id="inputAge"
+                  value="30"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="flex text-left">
+            <div class="Input">
+              <div>
+                <label>Weight (kg)</label>
+                <input
+                  type="number"
+                  class="input"
+                  min="40"
+                  name="weight"
+                  id="inputWeight"
+                  value="50"
+                  required
+                />
+              </div>
+            </div>
+            <div class="Input">
+              <div>
+                <label>Height (cm)</label>
+                <input
+                  type="number"
+                  class="input"
+                  min="100"
+                  name="height"
+                  id="inputHeight"
+                  value="160"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex text-left">
+              <label for="imgUpload" class="uploadImageClass">
+                <i class="fa fa-cloud-upload"></i> Upload Profile Image
+              </label>
+              <input onchange="addImageProfile(event)" id="imgUpload" name="img" type="file" />
+            </div>
+            <img width="100" height="100" src="https://www.seekpng.com/png/detail/110-1100707_person-avatar-placeholder.png" alt="" id="uploadImageView" />
+          </div>
+
+          <div class="tacbox">
+            <div>
+              <input id="checkbox" type="checkbox" required />
+              <label for="checkbox">
+                I agree to these <a href="#">Terms and Conditions</a>.</label
+              >
+            </div>
+          </div>
+
+          <div class="Input">
+            <input
+              style="padding: 15px"
+              type="submit"
+              value="Register"
+              class="btn"
+            />
+          </div>
+          <div class="tacbox">
+            <span
+              >Already have an account?
+              <a href="../login/login.html">Log in.</a></span
+            >
+          </div>
         </div>
-
-        <label for="inputWeight">
-          <span>Greutate ( in kg )</span>
-          <input type="number" min="40" name="weight" id="inputWeight" value=50 required>
-        </label>
-
-        <label for="inputHeight">
-          <span>Height ( in cm )</span>
-          <input type="number" min="100" name="height" id="inputHeight" value=160 required>
-        </label>
-
-        <label for="inputAge">
-          <span>Age</span>
-          <input type="number" min="16" name="age" id="inputAge" value=30 required>
-        </label>
-
-        <label for="image">
-          <span>Select image</span>
-          <input type="file" id="imgUpload" name="img" accept="image/*">
-        </label>
-
-        <div class="Input_Terms">
-          <label class="check">
-            <input type="checkbox" required>
-            <span class="checkmark"></span>
-          </label>
-          <p>Agreed to terms and conditions</p>
-        </div>
-        <div class="Input">
-          <input type="submit" value="Register" class="btn">
-        </div>
-      </div>
-    </form>
-
-  </div>
-
-
-
-</body>
-
+      </form>
+    </div>
+  </body>
 </html>

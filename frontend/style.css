@@ -302,11 +302,23 @@ main {
 }
 
 label {
-  margin: 0.5em;
-  display: flex;
-  height: 2.5em;
+  /* display: flex; */
+  /* height: 2.5em; */
+}
+.tacbox{
+  text-align: left;
+  margin:20px 0
 }
 
+.tacbox a{
+  color:#ccc;
+}
+.tacbox a:hover{
+  color:#000;
+}
+.tacbox input{
+  width: fit-content;
+}
 label span {
   text-align: center;
   width: 50%;
@@ -315,15 +327,11 @@ label span {
   color: white;
 }
 
-#inputDurata {
-  max-width: 100px;
-}
-
 input {
   width: 50%;
   border-radius: 0.5em;
   border: none;
-  text-align: center;
+  text-align: left;
 }
 
 select {
@@ -342,8 +350,6 @@ select {
 }
 
 .submit-btn {
-  width: 7em;
-  height: 3em;
   border-radius: 1.5em;
   border: none;
   background-color: #5cbc76;
@@ -351,7 +357,8 @@ select {
   font-size: large;
   font-weight: 600;
   transition: all 0.3s ease;
-  margin: auto;
+  display: inline-block;
+  padding: 20px 10px;
 }
 
 #submit-btn:hover {

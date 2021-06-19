@@ -1,5 +1,5 @@
 const http = require("http");
-require('events').EventEmitter.prototype._maxListeners = 100;
+require("events").EventEmitter.prototype._maxListeners = 100;
 
 const {
   login,
@@ -8,7 +8,7 @@ const {
   updateUser,
   getUserExercises,
   getFeed,
-  sendEmail
+  sendEmail,
 } = require("./controllers/userController");
 
 const {
@@ -16,22 +16,26 @@ const {
   addExercisesUser,
 } = require("./controllers/exerciseController");
 
-const server = http.createServer((req, res) => {
-
+const server = http.createServer(async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Request-Method", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT");
+  res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, PATCH, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "*");
+  if (req.method === "OPTIONS") {
+    res.writeHead(200);
+    res.end();
+    return;
+  }
+  res.setHeader("Content-Type", "application/json"); // Set Content Type to return JSON
 
   if (req.url.match(/\/api\/auth\/([0-9 a-z A-Z]+)/)) {
     if (req.url === "/api/auth/login" && req.method === "POST") {
-      login(req, res);
+     return await login(req, res);
     } else if (req.url === "/api/auth/register" && req.method === "POST") {
-      req.setEncoding("latin1")
-      register(req, res);
+     return await register(req, res);
     }
-  } else if (req.url==="/api/contact" && req.method==="POST"){
-    sendEmail(req, res)
+  } else if (req.url === "/api/contact" && req.method === "POST") {
+    sendEmail(req, res);
   } else {
     let params = req.url.split("?token=");
     let token;
@@ -53,16 +57,15 @@ const server = http.createServer((req, res) => {
       let newUrl = params[0];
       if (newUrl == "/api/feed" && req.method === "GET") {
         getTop(req, res, email, token);
-      } else 
-      if (newUrl == "/api/users/top" && req.method === "GET") {
+      } else if (newUrl == "/api/users/top" && req.method === "GET") {
         getTop(req, res, email, token);
       } else if (newUrl == "/api/users" && req.method === "POST") {
         updateUser(req, res, email, token);
       } else if (newUrl === "/api/exercises" && req.method === "GET") {
         getExercises(req, res, email, token, otherParams);
-      }  else if (newUrl === "/api/exercises/user" && req.method === "GET") {
+      } else if (newUrl === "/api/exercises/user" && req.method === "GET") {
         getUserExercises(req, res, email, token, otherParams);
-      }else if (newUrl === "/api/exercises" && req.method === "POST") {
+      } else if (newUrl === "/api/exercises" && req.method === "POST") {
         addExercisesUser(req, res, email, token);
       } else {
         res.writeHead(404, { "Content-Type": "application/json" });

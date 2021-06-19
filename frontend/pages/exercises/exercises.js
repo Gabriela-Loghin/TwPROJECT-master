@@ -5,10 +5,10 @@ const urlPUT = "http://localhost:5000/api/users";
 
 let exercises = [];
 
-// Read auth data from the localstorage object
-let auth = JSON.parse(localStorage.getItem("auth"));
+// Read auth data from the sessionStorage object
+let auth = JSON.parse(sessionStorage.getItem("auth"));
 // Template literals (Template strings)
-var params = `token=${auth.token.split('"')[1]}&email=${auth.email}`;
+var params = `token=${auth.token}&email=${auth.email}`;
 
 // Submit of the forum on the page
 function submitExerciseForm(event) {

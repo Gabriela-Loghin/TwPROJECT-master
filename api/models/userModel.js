@@ -5,8 +5,8 @@ var nodemailer = require('nodemailer');
 
 const con = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "0000",
+  user: "daniel",
+  password: "password",
   database: "workout_generator",
 });
 
@@ -30,7 +30,7 @@ function getByEmail(email) {
 
 function login(user) {
   return new Promise((resolve, reject) => {
-    let query = `SELECT * FROM users where email = "${user.email}" and password = "${user.pass}"`
+    let query = `SELECT * FROM users where email = "${user.email}"`
     con.query(query, function (err, result, fields) {
       if (err) throw err;
       if (result.length !== 0) {
@@ -51,13 +51,13 @@ function login(user) {
 
 function register(user) {
   return new Promise((resolve, reject) => {
-    user.imagePath=user.imagePath.replace(/\\/g, '\\\\')
+    console.log(user.imagePath)
+    // user.imagePath=user.imagePath.replace(/\\/g, '\\\\')
       let query = `INSERT INTO users (first_name, last_name, password, email, body_type, age, gender, imagePath ) VALUES ("${
-        user.firstName}", "${user.lastName}", "${user.pass}","${user.email}", ${user.bodyType}, ${user.age},${user.gender}, "${user.imagePath}" )`;
+        user.firstName}", "${user.lastName}", "${user.pass}","${user.email}", ${user.bodyType}, ${user.age},${user.gender}, ${JSON.stringify("")} )`;
       con.query(query, function (err, result, fields) {
         if (err){
             throw err;
-        
         }
         resolve(user);
       });

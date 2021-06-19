@@ -4,8 +4,8 @@ const url = "http://localhost:5000/api/users/top";
 let users = [];
 
 
-let auth = JSON.parse(localStorage.getItem("auth"))
-var params = `token=${auth.token.split("\"")[1]}&email=${auth.email}`;
+let auth = JSON.parse(sessionStorage.getItem("auth"))
+var params = `token=${auth.token}&email=${auth.email}`;
 // xhr.withCredentials = true; cors error
 
 xhr.addEventListener("readystatechange", function() {
@@ -42,7 +42,7 @@ function loadTop() {
         var img = document.createElement("img");
         img.classList.add("person-image");
         img.alt="person-image";
-        img.src=user.imagePath
+        img.src=user.imagePath || 'https://media.istockphoto.com/vectors/default-placeholder-man-vector-id844000412?b=1&k=6&m=844000412&s=612x612&w=0&h=C8xYIKaUQg8zdMXvbmSfu9MeXOGAI-U1wTpvKZJo_DM='
 
         var persData = document.createElement("div");
         persData.classList.add("person-data");

@@ -1,36 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="../../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <script defer src="about.js"></script>
+    <script defer src="../utils/utils.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <title>Proiect TW</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="about.css" />
-  <link rel="stylesheet" href="../../style.css" />
-  <title>Document</title>
-</head>
-
-<body>
-  <nav>
-    <div class="topnav">
-      <a href="../exercises/exercises.html">Exercise</a>
-      <a href="../top/top.html">Top</a>
-      <a href="../contact/contact.html">Contact</a>
-      <a class="active" href="../about/about.html">About</a>
+  <body onload="checkAuth(false)">
+    <nav>
+      <div class="topnav">
+        <a class="active" id="homeLink" href="../about/about.html"
+          ><i class="fas fa-home"></i> Home</a
+        >
+        <a
+          style="display: none"
+          id="exercisesLink"
+          href="../exercises/exercises.html"
+          ><i class="fas fa-star-half-alt"></i> Exercise</a
+        >
+        <a id="topLink" href="../top/top.html"
+          ><i class="fas fa-star-half-alt"></i> Top</a
+        >
+        <a id="contactLink" href="../contact/contact.html"
+          ><i class="far fa-envelope"></i> Contact</a
+        >
+      </div>
+      <div class="topnav">
+        <!-- <a id="notLoggedIn" href="../register/Register.html">Register</a>
+        <a id="loggedIn" href="../profile/profile.html">My account</a> -->
+        <a style="display: none" id="myAccount" href="../profile/profile.html"
+          ><i class="fas fa-user"></i> My Account</a
+        >
+        <a
+          style="display: none"
+          id="myLogout"
+          href="../about/about.html?logout=true"
+          ><i class="fas fa-sign-out-alt"></i> Logout</a
+        >
+        <a id="generalAccount" href="../profile/profile.html"
+          ><i class="fas fa-user-circle"></i> Account</a
+        >
+      </div>
+    </nav>
+    <div class="wrapper" style="width: 80%; max-width: 80%">
+      <h1 data-text="In ce consta acest site">Bine ai venit!</h1>
+      <p>
+        Daca vrei sa ai grija de corpul tau aici e locui ideal sa faci asta!
+      </p>
     </div>
-    <div class="topnav">
-      <a id="notLoggedIn" href="../login/login.html">Login</a>
-      <a id="loggedIn" href="../profile/profile.html">My account</a>
+    <div class="wrapper" style="width: 80%; max-width: 80%">
+      <h1 data-text="In ce consta acest site">In ce consta acest site</h1>
+      <p>
+        Pe baza preferintei utilizatorului,acesta poate sa faca un anumit
+        exercitiu fizic
+      </p>
     </div>
-  </nav>
-
-  <div class="wrapper">
-
-    <h1 data-text="In ce consta acest site">In ce consta acest site</h1>
-    <p>Pe baza preferintei utilizatorului,acesta poate sa faca un anumit exercitiu fizic</p>
-
-
-  </div>
-</body>
-
+  </body>
 </html>

@@ -1,53 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login.css" />
     <script src="login.js"></script>
     <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../register/register.css" />
+    <script defer src="../utils/utils.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body onload="checkAuth(false)">
     <!-- Navigator bar with 2 section and links as buttons -->
     <nav>
-        <div class="topnav">
-            <!-- Redirect links to other static pages -->
-            <a href="../exercises/exercises.html">Exercise</a>
-            <a href="../top/top.html">Top</a>
-            <a href="../contact/contact.html">Contact</a>
-            <a href="../about/about.html">About</a>
-        </div>
-        <div class="topnav">
-            <a id="notLoggedIn" href="../register/Register.html">Register</a>
-            <a id="loggedIn" href="../profile/profile.html">My account</a>
-        </div>
+      <div class="topnav">
+        <a id="homeLink" href="../about/about.html"
+          ><i class="fas fa-home"></i> Home</a
+        >
+        <a style="display: none;"  id="exercisesLink" class="active" href="../exercises/exercises.html"
+          ><i class="fas fa-star-half-alt"></i> Exercise</a
+        >
+        <a id="topLink" href="../top/top.html"
+          ><i class="fas fa-star-half-alt"></i> Top</a
+        >
+        <a id="contactLink" href="../contact/contact.html"
+          ><i class="far fa-envelope"></i> Contact</a
+        >
+      </div>
+      <div class="topnav">
+        <!-- <a id="notLoggedIn" href="../register/Register.html">Register</a>
+          <a id="loggedIn" href="../profile/profile.html">My account</a> -->
+        <a style="display: none;"  id="myAccount" href="../profile/profile.html"
+          ><i class="fas fa-user"></i> My Account</a
+        >
+        <a style="display: none;"  id="myLogout" href="../about/about.html?logout=true"
+          ><i class="fas fa-sign-out-alt"></i> Logout</a
+        >
+        <a class="active"id="generalAccount" href="../profile/profile.html"
+          ><i class="fas fa-user-circle"></i> Account</a
+        >
+      </div>
     </nav>
+    <div class="wrapper">
+      <h1 id="text">
+        <span>L</span>
+        <span>O</span>
+        <span>G</span>
+        <span>I</span>
+        <span>N</span>
+      </h1>
+      <form onsubmit="submitLogin(event)">
+        <div class="Form">
+          <div class="Input">
+            <div class="text-left">
+              <label style="margin: 0px">Email</label>
+              <input
+                type="email"
+                style="margin: 0px"
+                placeholder="Email"
+                class="input"
+                value="test-admin@yahoo.com"
+                name="email"
+                required
+              />
+            </div>
+          </div>
+          <div class="Input">
+            <div>
+              <label style="margin: 0px">Password</label>
+              <input
+                type="password"
+                style="margin: 0px"
+                value="admin"
+                name="pass"
+                placeholder="Password"
+                class="input"
+                required
+              />
+            </div>
+          </div>
 
-    <!-- Html tag defining a section of the page. Works in a similar way with a paragraph -->
-    <div class="login-container">
-
-        <!-- Basic form that calls the submitLogin method if the submit button is clicked -->
-        <form onsubmit="submitLogin(event)">
-            <label for="email-input">
-                <span>Email</span>
-                <input type="email" name="mail" id="email-input" required>
-            </label>
-            <label for="pasword-input">
-                <span>Password</span>
-                <input type="password" name="password" id="pasword-input" required>
-            </label>
-            <input type="submit" value="Login" id="submit-btn">
-        </form>
-
-        <!-- Error message with display:none until the js script changes it to something else -->
-        <div id="invalid-login">Invalid username / password</div>
-
+          <div class="Input">
+            <input
+              style="padding: 15px; margin: 10px 0"
+              type="submit"
+              value="Login"
+              class="btn"
+            />
+          </div>
+          <div class="tacbox">
+            <span
+              >Don't have an account?Please
+              <a href="../register/Register.html">register</a></span
+            >
+          </div>
+        </div>
+      </form>
     </div>
-</body>
-
+  </body>
 </html>

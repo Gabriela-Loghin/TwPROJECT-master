@@ -3,9 +3,9 @@ const { getPostData, getBoundary, getMatching } = require("../utils");
 var FormData = require("form-data");
 const fs = require("fs");
 const rss = require("rss");
-const path = require( "path" );
-const { v4: uuidv4, v4 } = require('uuid');
-
+const path = require("path");
+const { v4: uuidv4, v4 } = require("uuid");
+const bcrypt = require("bcryptjs");
 
 async function login(req, res) {
   try {
@@ -21,13 +21,14 @@ async function login(req, res) {
 
     if (!token) {
       res.writeHead(404, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ message: "User not found" }));
+      res.end(JSON.stringify({ success: "failed", message: "User not found" }));
     } else {
       res.writeHead(201, { "Content-Type": "application/json" });
-      return res.end(JSON.stringify(token));
+      return res.end(JSON.stringify({ status: "success", token }));
     }
   } catch (error) {
-    console.log(error);
+    res.writeHead(404, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ success: "failed", message: error.message }));
   }
 }
 
@@ -37,85 +38,54 @@ function getBodyType(weight, height) {
   if (bodyType > 25) return 3; //overweight
   return 1; //normal
 }
+const TransformBufferToString = (req) =>
+  new Promise((resolve, reject) => {
+    try {
+      let output = "";
+      req.on("data", (buffer) => (output += buffer.toString()));
+      req.on("end", () => resolve(output));
+    } catch (error) {
+      reject(error);
+    }
+  });
 
 async function register(req, res) {
-  
-  let fileFullPath ="";
   try {
-    let result = {};
-    let rawData = await getPostData(req)
-    let boundary = getBoundary(req)
-    const rawDataArray = rawData.split(boundary);
-    for (let item of rawDataArray) {
-      // Use non-matching groups to exclude part of the result
-      let name = getMatching(item, /(?:name=")(.+?)(?:")/);
-      if (!name || !(name = name.trim())) continue;
-      let value = getMatching(item, /(?:\r\n\r\n)([\S\s]*)(?:\r\n--$)/);
-      if (!value) continue;
-      let filename = getMatching(item, /(?:filename=")(.*?)(?:")/);
-      if (filename && (filename = filename.trim())) {
-        // Add the file information in a files array
-        let file = {};
-        file[name] = value;
-        file["filename"] = filename;
-        let contentType = getMatching(item, /(?:Content-Type:)(.*?)(?:\r\n)/);
-        if (contentType && (contentType = contentType.trim())) {
-          file["Content-Type"] = contentType;
-        }
-        if (!result.files) {
-          result.files = [];
-        }
-        result.files.push(file);
-      } else {
-        // Key/Value pair
-        result[name] = value;
-      }
-    }
+    let result = await TransformBufferToString(req);
+    result = await JSON.parse(result);
 
     const userDb = await User.getByEmail(result.email);
     if (userDb) {
-      res.writeHead(404, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ message: "Email already exists" }));
-      return;
-    } 
+      res.statusCode = 400;
+      return res.end(
+        JSON.stringify({ status: "failed", error: "Email already exists" })
+      );
+    }
 
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(result.pass, salt);
 
-     if (result.files) {
-          fileFullPath = path.resolve('usersImages/'+ uuidv4()+'.jpg');
-          const stream = fs.createWriteStream(fileFullPath)
-          stream.write(result.files[0].photo, 'binary')
-          stream.close()
-          result.files[0].picture = 'bin'
-      }
-
-
-    //console.log(result.files[0].photo)
-
-
-    //const { firstName, lastName, pass, gender, weight, height, age, email } = JSON.parse(result);
-    //console.log(formData["sal"])
-
-    let bodyType = getBodyType(result.weight, result.height);
     let gender2 = result.gender == "male" ? 1 : 2;
     let age2 = result.age < 30 ? 1 : result.age < 50 ? 2 : 3;
+    let bodyType = getBodyType(result.weight, result.height);
 
-      const data = {
-        firstName : result.firstName,
-        lastName :result.lastName,
-        pass : result.pass,
-        gender : gender2,
-        age : age2,
-        bodyType, 
-        email : result.email,
-        imagePath: fileFullPath
-      };
+    const data = {
+      firstName: result.firstName,
+      lastName: result.lastName,
+      pass: hashPassword,
+      gender: gender2,
+      age: age2,
+      bodyType,
+      email: result.email,
+      imagePath: result.photo,
+    };
 
-      const user = await User.register(data);
-
-      res.writeHead(201, { "Content-Type": "application/json" });
-      return res.end(JSON.stringify(user));
+    const user = await User.register(data);
+    res.statusCode = 201;
+    return res.end(JSON.stringify({ status: "success", user }));
   } catch (error) {
-    console.log(error);
+    res.statusCode = 400;
+    return res.end(JSON.stringify({ status: "failed", error: error.message }));
   }
 }
 
@@ -164,6 +134,7 @@ async function updateUser(req, res, email, token) {
           antrenamente,
         } = JSON.parse(body);
 
+        console.log(antrenamente);
         const userData = {
           firstName: firstName || user.first_name,
           lastName: lastName || user.last_name,
@@ -183,7 +154,7 @@ async function updateUser(req, res, email, token) {
       }
     }
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 }
 
@@ -234,7 +205,6 @@ async function getFeed(req, res, email, token) {
       } else {
         const exercises = await User.getUserExercises(user.id);
         if (exercises) {
-          
           res.writeHead(200, { "Content-Type": "application/json" });
           return res.end(JSON.stringify(userExercises));
         } else {
@@ -274,4 +244,3 @@ module.exports = {
   getFeed,
   sendEmail,
 };
-
