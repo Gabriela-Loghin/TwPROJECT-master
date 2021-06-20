@@ -41,6 +41,8 @@ function getExercises(user, params) {
 
     query += `(e.body_type = ${user.body_type} OR e.body_type=4 ) AND (e.gender = ${user.gender} OR e.gender=3) AND (e.age=${user.age} OR e.age=4)`;
 
+
+    console.log(query);
     con.query(query, function (err, result, fields) {
       if (err) throw err;
       resolve(result);

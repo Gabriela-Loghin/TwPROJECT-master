@@ -51,10 +51,8 @@ function login(user) {
 
 function register(user) {
   return new Promise((resolve, reject) => {
-    console.log(user.imagePath)
-    // user.imagePath=user.imagePath.replace(/\\/g, '\\\\')
       let query = `INSERT INTO users (first_name, last_name, password, email, body_type, age, gender, imagePath ) VALUES ("${
-        user.firstName}", "${user.lastName}", "${user.pass}","${user.email}", ${user.bodyType}, ${user.age},${user.gender}, ${JSON.stringify("")} )`;
+        user.firstName}", "${user.lastName}", "${user.pass}","${user.email}", ${user.bodyType}, ${user.age},${user.gender}, ${JSON.stringify(user.imagePath)} )`;
       con.query(query, function (err, result, fields) {
         if (err){
             throw err;
@@ -113,7 +111,7 @@ function validateToken(userEmail, token){
 function getUserExercises(userID){
    return new Promise(async (resolve, reject) => {
     
-    let query = `select e.name, ue.count, u.imagePath from exercises e join user_exercises ue on e.id=ue.idExercise join users u on u.id=ue.idUser where ue.idUser=${userID}`;
+    let query = `select e.name, e.calories,  ue.count from exercises e join user_exercises ue on e.id=ue.idExercise join users u on u.id=ue.idUser where ue.idUser=${userID}`;
     
     con.query(query, function (err, result, fields) {
       if (err) throw err;
@@ -123,6 +121,18 @@ function getUserExercises(userID){
   });
 }
 
+function getAllUsers(){
+  return new Promise(async (resolve, reject) => {
+   
+   let query = `select id,antrenamente,email, first_name from users`;
+   
+   con.query(query, function (err, result, fields) {
+     if (err) throw err;
+     resolve(result)
+   });
+                                    
+ });
+}
 function sendEmail(firstName, message, email) {
   return new Promise(async (resolve, reject) => {
     var transporter = nodemailer.createTransport({
@@ -163,6 +173,7 @@ module.exports = {
   validateToken,
   getUserExercises,
   sendEmail,
+  getAllUsers
 };
 
 

@@ -25,7 +25,7 @@ const fromImageToBase64 = (file) => {
 async function addImageProfile(event) {
   if (event.target && event.target.files && event.target.files.length > 0) {
     currentImageURL = await fromImageToBase64(event.target.files[0]);
-    
+    console.log(currentImageURL)
     if (document.getElementById("uploadImageView")) {
       document.getElementById("uploadImageView").src = `data:image/png;base64,${currentImageURL}`;
     }

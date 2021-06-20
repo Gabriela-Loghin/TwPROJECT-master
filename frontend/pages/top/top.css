@@ -55,3 +55,22 @@ body {
   padding:10px
 }
 
+.btn{
+  background: transparent;
+  border:1px solid #000;
+  padding:20px;
+  color:#000;
+}
+
+.btn{
+  padding:20px;
+  margin:20px;
+  clear: both;
+  display:inline-block;
+}
+
+.btn:hover{
+  color:#f2f2f2;
+  border:1px solid #f2f2f2;
+  cursor: pointer;
+}

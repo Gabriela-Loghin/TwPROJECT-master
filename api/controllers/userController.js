@@ -80,6 +80,8 @@ async function register(req, res) {
       imagePath: result.photo,
     };
 
+    console.log(result.photo)
+
     const user = await User.register(data);
     res.statusCode = 201;
     return res.end(JSON.stringify({ status: "success", user }));
@@ -166,19 +168,45 @@ async function getUserExercises(req, res, email, token) {
       res.end(JSON.stringify({ message: "Unauthorized" }));
     } else {
       const user = await User.getByEmail(email);
-
+console.log(user.id)
       if (!user) {
         res.writeHead(404, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ message: "user not found" }));
       } else {
         const exercises = await User.getUserExercises(user.id);
+
+        console.log(exercises)
+        const users = await User.getAllUsers();
+
+        let MainResponse = [];
+        for (let index = 0; index < users.length; index++) {
+          if(users[index].antrenamente > 0){
+            console.log(users[index].id)
+            const element =  await User.getUserExercises(users[index].id) ;
+
+            if(element.length > 0){
+              console.log(element)
+            }
+            
+            const resToAdd = {
+              ...users[index],
+              exercises:element
+            }
+  
+            MainResponse.push(resToAdd)
+          }
+         
+        }
+
         if (exercises) {
           userExercises = {
+            name:`${user.first_name} ${user.last_name}`,
+            email:user.email,
             img: user.imagePath,
             exercises: exercises,
           };
           res.writeHead(200, { "Content-Type": "application/json" });
-          return res.end(JSON.stringify(userExercises));
+          return res.end(JSON.stringify({userExercises, MainResponse}));
         } else {
           res.writeHead(404, { "Content-Type": "application/json" });
           res.end(JSON.stringify({ message: "ex not found" }));

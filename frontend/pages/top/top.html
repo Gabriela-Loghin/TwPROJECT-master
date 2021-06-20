@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="top.css" />
+    <link rel="stylesheet" href="chart.css" />
     <link rel="stylesheet" href="../../style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
     <script src="top.js"></script>
@@ -22,11 +23,18 @@
   <body onload="checkAuth(false)">
     <nav>
       <div class="topnav">
-        <a  id="homeLink" href="../about/about.html"><i class="fas fa-home"></i> Home</a>
-        <a id="exercisesLink" style="display: none;"  href="../exercises/exercises.html"
+        <a id="homeLink" href="../about/about.html"
+          ><i class="fas fa-home"></i> Home</a
+        >
+        <a
+          id="exercisesLink"
+          style="display: none"
+          href="../exercises/exercises.html"
           ><i class="fas fa-star-half-alt"></i> Exercise</a
         >
-        <a  class="active" id="topLink"  href="../top/top.html"><i class="fas fa-star-half-alt"></i> Top</a>
+        <a class="active" id="topLink" href="../top/top.html"
+          ><i class="fas fa-star-half-alt"></i> Top</a
+        >
         <a id="contactLink" href="../contact/contact.html"
           ><i class="far fa-envelope"></i> Contact</a
         >
@@ -34,10 +42,13 @@
       <div class="topnav">
         <!-- <a id="notLoggedIn" href="../register/Register.html">Register</a>
           <a id="loggedIn" href="../profile/profile.html">My account</a> -->
-        <a id="myAccount" style="display: none;"  href="../profile/profile.html"
+        <a id="myAccount" style="display: none" href="../profile/profile.html"
           ><i class="fas fa-user"></i> My Account</a
         >
-        <a id="myLogout" style="display: none;"  href="../about/about.html?logout=true"
+        <a
+          id="myLogout"
+          style="display: none"
+          href="../about/about.html?logout=true"
           ><i class="fas fa-sign-out-alt"></i> Logout</a
         >
         <a id="generalAccount" href="../profile/profile.html"
@@ -47,11 +58,26 @@
     </nav>
     <div class="top">
       <div>
+        <a class="btn" id="buttonJson" >See json</a>
         <!-- to do : mai frumoase -->
-        <button class="btn" id="buttonJson" onclick="loadTopJSON()">See json</button>
-
-        <button onclick="loadTopPDF()">Download pdf</button>
+      
+        <a class="btn" onclick="loadTopPDF()">Download pdf</a>
         <div id="topJson"></div>
+      </div>
+    </div>
+
+    <div class="statistics" id="statistics">
+      <div>
+        <div class="chart-wrap vertical">
+          <h2 class="title">Top Users by exercises number</h2>
+          <div id="statisticone" class="grid"></div>
+        </div>
+      </div>
+      <div>
+        <div class="chart-wrap vertical">
+          <h2 class="title">Top Users by calories burned</h2>
+          <div id="statistictwo" class="grid"></div>
+        </div>
       </div>
     </div>
   </body>
